@@ -27,8 +27,11 @@ CREATE TABLE IF NOT EXISTS `webiptables`.`nat_filter` (
   `type` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `webiptables`.`nat_rules` (`idNat`, `nameNat`, `ipAddress`, `port`, `type`) VALUES
-	(1, 'NAT le port 22 sur le serveur Web1', '10.0.0.1', 22, 'Source Nat');
+INSERT INTO `webiptables`.`nat_rules` (`idNat`, `nameNat`, 'ipAddressSrc', 'portSrc', 'ipAddressDst', 'portDst', `type`) VALUES
+	(1, 'Filtre le port 22 sur le serveur Web1', '10.0.0.1', 22, 'Source Nat');
+
+INSERT INTO `webiptables`.`nat_filter` (`idNat`, `nameNat`, `ipAddress`, `port`, `type`) VALUES
+	(1, 'NAT le port 22 sur le serveur Web1', '10.0.0.1', 22, '10.0.0.1', 22, 'Source Nat');
 
 INSERT INTO `webiptables`.`nat_alias` (`id`, `name`, `ipAddress`, `port`) VALUES
 	(1, 'SSH WebServer1', '10.0.0.1', 22);
